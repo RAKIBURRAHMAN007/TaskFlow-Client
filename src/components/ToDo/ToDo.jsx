@@ -59,7 +59,7 @@ const ToDo = () => {
             Manage your <br /> tasks with TaskFlow.
           </h1>
           <p className="text-center mt-3 mb-2">
-            Our ToDo page now includes an easy-to-use drag-and-drop feature,
+            Our taskFlow page now includes an easy-to-use drag-and-drop feature,
             allowing you to reorder tasks effortlessly.{" "}
           </p>
         </div>
@@ -75,7 +75,7 @@ const ToDo = () => {
 
         {/* Modal */}
         {modalOpen && (
-          <div className="fixed top-0 left-0 w-full h-full shadow-2xl flex justify-center items-center z-50">
+          <div className="fixed top-0 bg-gray-50/45 left-0 w-full h-full shadow-2xl flex justify-center items-center z-50">
             <div className="bg-white p-6 rounded-lg shadow-lg w-96">
               <h3 className="text-xl font-semibold mb-4">Add New Task</h3>
               <form onSubmit={handleAddTask}>
