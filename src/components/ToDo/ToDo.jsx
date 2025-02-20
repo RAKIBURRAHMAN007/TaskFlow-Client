@@ -51,12 +51,16 @@ const ToDo = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="w-11/12 mx-auto">
+      <div className="w-11/12 mx-auto pt-16">
         <div>
           <h1 className="text-center font-bold text-[#d3a955] text-xl md:text-3xl pt-5">
             Welcome, <span className="underline">{user.displayName}</span>!
-            Manage your tasks with TaskFlow.
+            Manage <br /> your tasks with TaskFlow.
           </h1>
+          <p className="text-center mt-3 mb-2">
+            Our ToDo page now includes an easy-to-use drag-and-drop feature,
+            allowing you to reorder tasks effortlessly.{" "}
+          </p>
         </div>
 
         <div className="flex justify-center mt-4">

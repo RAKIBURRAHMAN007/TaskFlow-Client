@@ -12,7 +12,7 @@ export const Task = ({ task }) => {
   return (
     <div
       ref={drag}
-      className="p-4 mb-4 bg-gray-100 rounded shadow-md cursor-move"
+      className="p-4 mb-4  bg-gray-100 rounded shadow-md cursor-move"
     >
       <h3 className="font-semibold">{task.title}</h3>
       <p>{task.description}</p>
