@@ -7,19 +7,7 @@ const NavBar = () => {
   const handleLogOut = () => {
     logOut();
   };
-  const links = (
-    <>
-      <li>
-        <NavLink>To-Do</NavLink>
-      </li>
-      <li>
-        <NavLink>In Progress</NavLink>
-      </li>
-      <li>
-        <NavLink>Done</NavLink>
-      </li>
-    </>
-  );
+
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="navbar-start">
@@ -44,14 +32,12 @@ const NavBar = () => {
           <ul
             tabIndex={0}
             class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-          >
-            {links}
-          </ul>
+          ></ul>
         </div>
         <a className="btn btn-ghost text-2xl">taskFlow</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal text-xl  px-1">{links}</ul>
+        <ul className="menu menu-horizontal text-xl  px-1"></ul>
       </div>
       <div className="navbar-end">
         <button onClick={handleLogOut} className="btn font-bold btn-outline">

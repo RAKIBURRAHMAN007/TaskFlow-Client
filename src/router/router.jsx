@@ -3,6 +3,7 @@ import Root from "../pages/Root";
 import Login from "../components/Login/Login";
 import PrivateRoute from "./PrivateRoute";
 import RegisterPage from "../components/Register/Register";
+import ToDo from "../components/ToDo/ToDo";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,7 +20,12 @@ const router = createBrowserRouter([
         <Root></Root>
       </PrivateRoute>
     ),
-    children: [{}],
+    children: [
+      {
+        path: "todo",
+        element: <ToDo></ToDo>,
+      },
+    ],
   },
 ]);
 export default router;
