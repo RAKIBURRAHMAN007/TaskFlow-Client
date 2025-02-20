@@ -5,10 +5,12 @@ import PrivateRoute from "./PrivateRoute";
 import RegisterPage from "../components/Register/Register";
 import ToDo from "../components/ToDo/ToDo";
 import TaskMain from "../components/TaskMain/TaskMain";
+import ErrorPage from "../components/ErrorPage/ErrorPage";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <TaskMain></TaskMain>,
+    errorElement: <ErrorPage></ErrorPage>,
   },
   {
     path: "/login",
@@ -25,6 +27,7 @@ const router = createBrowserRouter([
         <Root></Root>
       </PrivateRoute>
     ),
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "todo",
