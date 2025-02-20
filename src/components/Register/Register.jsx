@@ -47,7 +47,7 @@ const RegisterPage = () => {
           axiosPublic.post("/users", userInfo).then((res) => {
             if (res.data.insertedId) {
               toast.success("User Registered Successfully");
-              navigate("/root");
+              navigate("/root/todo");
             }
           });
         });

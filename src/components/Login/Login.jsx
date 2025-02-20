@@ -25,7 +25,7 @@ const Login = () => {
       axiosPublic.post("/users", userInfo).then((res) => {
         toast.success("Login Successful");
 
-        navigate("/root");
+        navigate("/root/todo");
       });
     });
   };
@@ -40,7 +40,7 @@ const Login = () => {
         setUser(user);
         toast.success("Login Successful");
 
-        navigate("/root");
+        navigate("/root/todo");
       })
       .catch((err) => {
         setError({ ...error, login: err.code });

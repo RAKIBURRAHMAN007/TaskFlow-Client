@@ -117,7 +117,7 @@ const ToDo = () => {
           </div>
         )}
 
-        <div className="grid grid-cols-3 gap-4 mt-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-6">
           {["To-Do", "In Progress", "Done"].map((category) => (
             <TaskColumn
               key={category}
