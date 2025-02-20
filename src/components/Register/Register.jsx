@@ -1,15 +1,18 @@
 import { useContext, useState } from "react";
-import { AuthContext } from "../../Provider/AuthProvider";
+import { auth, AuthContext } from "../../Provider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Lottie from "lottie-react";
 import registerLottie from "../../assets/lottie/register.json";
+import UseAxiosPublic from "../../Hooks/useAxiosPublic";
+import { updateProfile } from "firebase/auth";
 const RegisterPage = () => {
   const { createNewUser, setUser } = useContext(AuthContext);
   const [error, setError] = useState({});
 
   const navigate = useNavigate();
   const location = useLocation();
+  const axiosPublic = UseAxiosPublic();
   const handleRegister = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -31,10 +34,28 @@ const RegisterPage = () => {
     createNewUser(email, password)
       .then((result) => {
         const registeredUser = result.user;
+        const profile = {
+          displayName: name,
+        };
+        const userInfo = {
+          displayName: name,
+          email: email,
+          role: "user",
+        };
 
-        navigate("/");
+        updateProfile(auth.currentUser, profile).then(() => {
+          axiosPublic.post("/users", userInfo).then((res) => {
+            if (res.data.insertedId) {
+              toast.success("User Registered Successfully");
+              navigate("/root");
+            }
+          });
+        });
 
-        toast.success("Registered Successfully");
+        setUser({
+          ...registeredUser,
+          name,
+        });
       })
       .catch((err) => {
         setError({ ...error, login: err.code });
@@ -43,11 +64,11 @@ const RegisterPage = () => {
   };
   return (
     <div className="w-11/12 mx-auto mb-10 ">
-      <h1 className="text-center text-[#d3a955] font-bold mb-12 text-xl md:text-5xl pt-5">
+      <h1 className="text-center text-[#d3a955] font-bold mb-5 text-2xl md:text-5xl pt-5">
         Register to Get <br />
         Started!
       </h1>
-      <p className="text-center text-xl font-medium  mt-4 mb-6">
+      <p className="text-center md:text-xl font-semibold   mb-6">
         Join us to streamline your workflow. Sign up and start managing tasks
         effortlessly.
       </p>

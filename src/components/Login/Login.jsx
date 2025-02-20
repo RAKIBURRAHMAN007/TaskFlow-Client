@@ -5,15 +5,29 @@ import GoogleButton from "react-google-button";
 import { toast } from "react-toastify";
 import loginLottie from "../../assets/lottie/loginlottiee.json";
 import Lottie from "lottie-react";
+import UseAxiosPublic from "../../Hooks/useAxiosPublic";
 const Login = () => {
   const navigate = useNavigate();
   const { googleSignIn, userLogin, setUser, user } = useContext(AuthContext);
   const emailRef = useRef();
   const [error, setError] = useState({});
   const location = useLocation();
+  const axiosPublic = UseAxiosPublic();
   const handleGoogleSignIn = (e) => {
-    googleSignIn();
-    navigate("/root");
+    googleSignIn().then((result) => {
+      const userInfo = {
+        email: result.user?.email,
+        displayName: result.user?.displayName,
+        role: "user",
+      };
+      // console.log('rsult', result)
+
+      axiosPublic.post("/users", userInfo).then((res) => {
+        toast.success("Login Successful");
+
+        navigate("/root");
+      });
+    });
   };
   const handleLogin = (e) => {
     e.preventDefault();
@@ -35,11 +49,11 @@ const Login = () => {
   };
   return (
     <div className="w-11/12 mx-auto mb-9">
-      <h1 className="text-center font-bold text-[#d3a955]  text-xl md:text-5xl pt-5">
+      <h1 className="text-center font-bold text-[#d3a955]  text-2xl md:text-5xl pt-5">
         Login to Your taskFlow <br />
         Account
       </h1>
-      <p className="text-center text-xl font-medium  mt-4 mb-6">
+      <p className="text-center md:text-xl font-semibold  mt-4 mb-6">
         Welcome back! Log in to manage your tasks and stay organized.
       </p>
       <div className="md:flex gap-10  border bg-[#181024] items-center flex-row-reverse justify-center">
@@ -104,7 +118,7 @@ const Login = () => {
           </div>
           <div className="flex justify-center  mx-auto mt-1">
             <h1 className=" text-base text-white">
-              New to Visa RestoRooms?{" "}
+              New to taskFlow?{" "}
               <Link to="/register" className="underline text-[#9660ea]">
                 Register Now
               </Link>{" "}
