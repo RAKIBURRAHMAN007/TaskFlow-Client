@@ -67,7 +67,7 @@ const ToDo = () => {
         <div className="flex justify-center mt-4">
           <button
             onClick={() => setModalOpen(true)}
-            className="btn-outline border-b-8 md:w-1/5 btn px-4 py-2 rounded"
+            className="btn-outline border-b-8 lg:w-1/5 btn px-4 py-2 rounded"
           >
             <FaPlus></FaPlus> Add New Task
           </button>

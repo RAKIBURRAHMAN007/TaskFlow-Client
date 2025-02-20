@@ -85,7 +85,7 @@ export const Task = ({ task, refetch }) => {
   return (
     <div
       ref={drag}
-      className="p-4 mb-4 bg-gray-100 rounded shadow-md cursor-move"
+      className="p-4 mb-4 bg-gray-100 rounded shadow-md cursor-move break-words w-full"
     >
       <h3 className="font-semibold">Task: {task.title}</h3>
       <p>

@@ -142,7 +142,7 @@ const RegisterPage = () => {
             <h1 className=" text-white">
               {" "}
               Already Have Account?{" "}
-              <Link to="/" className="underline text-[#9660ea]">
+              <Link to="/login" className="underline text-[#9660ea]">
                 Login Now
               </Link>{" "}
             </h1>
