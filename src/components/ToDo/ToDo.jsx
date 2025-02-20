@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { TaskColumn } from "../TaskComponents/TaskColumn";
+import { FaAddressBook, FaPlus } from "react-icons/fa";
 
 const ItemType = "TASK";
 
@@ -55,7 +56,7 @@ const ToDo = () => {
         <div>
           <h1 className="text-center font-bold text-[#d3a955] text-xl md:text-3xl pt-5">
             Welcome, <span className="underline">{user.displayName}</span>!
-            Manage <br /> your tasks with TaskFlow.
+            Manage your <br /> tasks with TaskFlow.
           </h1>
           <p className="text-center mt-3 mb-2">
             Our ToDo page now includes an easy-to-use drag-and-drop feature,
@@ -66,9 +67,9 @@ const ToDo = () => {
         <div className="flex justify-center mt-4">
           <button
             onClick={() => setModalOpen(true)}
-            className="btn-outline border-b-8 btn px-4 py-2 rounded"
+            className="btn-outline border-b-8 md:w-1/5 btn px-4 py-2 rounded"
           >
-            Add New Task
+            <FaPlus></FaPlus> Add New Task
           </button>
         </div>
 
@@ -126,6 +127,7 @@ const ToDo = () => {
             <TaskColumn
               key={category}
               category={category}
+              refetch={refetch}
               tasks={userTasks.filter((task) => task.category === category)}
               moveTask={moveTask}
             />

@@ -6,9 +6,13 @@ import Footer from "../components/Footer/Footer";
 const Root = () => {
   return (
     <div>
-      <NavBar></NavBar>
-      <Outlet></Outlet>
-      <Footer></Footer>
+      <div className=" lg:min-h-screen min-h-svh flex flex-col">
+        <NavBar />
+        <div className="flex-grow">
+          <Outlet />
+        </div>
+      </div>
+      <Footer />
     </div>
   );
 };
