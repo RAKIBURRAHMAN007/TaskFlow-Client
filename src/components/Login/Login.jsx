@@ -3,7 +3,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import GoogleButton from "react-google-button";
 import { toast } from "react-toastify";
-
+import loginLottie from "../../assets/lottie/loginlottiee.json";
+import Lottie from "lottie-react";
 const Login = () => {
   const navigate = useNavigate();
   const { googleSignIn, userLogin, setUser, user } = useContext(AuthContext);
@@ -33,32 +34,31 @@ const Login = () => {
       });
   };
   return (
-    <div className="w-11/12 mx-auto">
-      <h1 className="text-center font-bold text-[#d3a955]  text-xl md:text-5xl pt-12">
-        Login to Your Restorooms <br />
+    <div className="w-11/12 mx-auto mb-9">
+      <h1 className="text-center font-bold text-[#d3a955]  text-xl md:text-5xl pt-5">
+        Login to Your taskFlow <br />
         Account
       </h1>
-      <p className="text-center text-white mt-4 mb-6">
-        Manage your bookings, discover new destinations, and enjoy <br />{" "}
-        seamless experiences with Restorooms.
+      <p className="text-center text-xl font-medium  mt-4 mb-6">
+        Welcome back! Log in to manage your tasks and stay organized.
       </p>
       <div className="md:flex gap-10  border bg-[#181024] items-center flex-row-reverse justify-center">
         <div className="md:w-1/4 w-1/3 md:mt-10 mx-auto md:mx-0">
-          {/* <Lottie animationData={loginLottie}></Lottie> */}
+          <Lottie animationData={loginLottie}></Lottie>
         </div>
-        <div className="pb-10 md:w-2/4 ">
-          <div className=" bg-[#181024] mt-6  ">
-            <form onSubmit={handleLogin} className="card-body">
+        <div className="pb-10 md:w-2/5 ">
+          <div className=" bg-[#181024] mt-6 ">
+            <form onSubmit={handleLogin} className="card-body ">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text text-white text-xl ">Email</span>
                 </label>
+                <br />
                 <input
                   type="email"
-                  ref={emailRef}
                   name="email"
                   placeholder="email"
-                  className=" input input-bordered"
+                  className=" input w-full input-bordered"
                   required
                 />
               </div>
@@ -68,13 +68,15 @@ const Login = () => {
                     Password
                   </span>
                 </label>
+                <br />
                 <input
                   type="password"
                   name="password"
                   placeholder="password"
-                  className=" input input-bordered"
+                  className=" input w-full input-bordered"
                   required
                 />
+                <br />
                 {error.login && (
                   <label className="label text-sm text-red-600">
                     {error.login}
@@ -93,8 +95,8 @@ const Login = () => {
                   </span>
                 </label>
               </div>
-              <div className="form-control mt-6">
-                <button className="btn btn-primary bg-black text-[#d3a955] border-[#d3a955] text-xl ">
+              <div className="form-control flex justify-start mt-6">
+                <button className="btn btn-primary bg-black w-1/2 text-[#d3a955] border-[#d3a955] text-xl ">
                   Login
                 </button>
               </div>
