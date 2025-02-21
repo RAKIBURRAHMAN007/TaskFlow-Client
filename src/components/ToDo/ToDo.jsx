@@ -43,7 +43,10 @@ const ToDo = () => {
 
   const moveTask = async (task, newCategory) => {
     try {
-      await axiosPublic.put(`/tasks/${task._id}`, { category: newCategory });
+      await axiosPublic.put(`/tasks/${task._id}`, {
+        category: newCategory,
+        time: new Date().toLocaleTimeString(),
+      });
       refetch();
     } catch (error) {
       toast.error("Failed to move task");
@@ -99,8 +102,6 @@ const ToDo = () => {
                   className="w-full p-2 border border-gray-300 rounded mb-4"
                 >
                   <option value="To-Do">To-Do</option>
-                  <option value="In Progress">In Progress</option>
-                  <option value="Done">Done</option>
                 </select>
                 <div className="flex justify-between">
                   <button
