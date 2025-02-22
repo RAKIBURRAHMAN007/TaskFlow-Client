@@ -95,6 +95,10 @@ export const Task = ({ task, refetch }) => {
         <span className="font-semibold">Added at: </span>
         {task.time}
       </p>
+      <p>
+        <span className="font-semibold">Category: </span>
+        {task.category}
+      </p>
       <div className="flex justify-between gap-2 mt-2">
         {/* Delete Button */}
         <button
